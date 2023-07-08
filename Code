@@ -1,0 +1,10 @@
+class Solution:  #beats 91.15% runtime, 55.75% Memory 
+    def putMarbles(self, weights: List[int], k: int) -> int:
+        if k == 1:
+            return 0
+        pairSums = []
+        for i in range(len(weights) -1):
+            pairSums.append(weights[i]+weights[i+1])
+        pairSums.sort()
+        
+        return sum(pairSums[-(k-1):]) - sum(pairSums[:k-1])
